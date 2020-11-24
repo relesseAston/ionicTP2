@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      que manger aujourd'hui ? 
+    </ion-title>
+    <br/>
+    <br/>
+    <br/>
+    <ion-select [(ngModel)]="currentMealCategory" placeholder="category" (ionChange)="categorySelected($event)">
+      <ion-select-option *ngFor="let category of mealCategory">{{category}}</ion-select-option>
+    </ion-select>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <ion-grid *ngIf="meals">
+    <ion-row>
+      <ion-col *ngFor="let meal of meals" size="6" [routerLink]="['/meal', meal.idMeal]">
+        <img [src]="meal.strMealThumb"/>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+  
+</ion-content>
